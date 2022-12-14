@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Space Objects</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink='/favourites' routerDirection="root">
+        <ion-icon name="star-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar color="primary" [(ngModel)]="searchTerm"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of spaceObjects | filter:searchTerm">
+      <ion-label button [routerLink]="[item.id]"> {{ item.name }} 
+        <p> Is planet: {{ item.isPlanet }} </p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon *ngIf="isFavourite(item.name) == false" (click)="presentToast(item.name); addItem(item)" name="star-outline"></ion-icon>
+        <ion-icon *ngIf="isFavourite(item.name) == true" (click)="presentToast(item.name); addItem(item)" name="star"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

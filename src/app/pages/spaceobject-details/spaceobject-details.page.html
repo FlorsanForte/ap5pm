@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title> {{ spaceObject?.name }} details </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/spaceobjects"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="spaceObject">
+    <ion-item>
+      <ion-card-header>
+        <ion-card-title>Object ID: {{ spaceObject.id }}</ion-card-title>
+        <ion-card-subtitle><ion-icon name="people-outline"></ion-icon> Discovered by: {{ spaceObject.discoveredBy }}</ion-card-subtitle>
+        <ion-card-subtitle><ion-icon name="calendar-outline"></ion-icon> Discovery date: {{ spaceObject.discoveryDate }}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-item>
+    <ion-card-content>
+      <ion-card-subtitle><ion-icon name="information-circle-outline"></ion-icon> Basic informations:</ion-card-subtitle>
+      <ion-text *ngIf="spaceObject.englishName != null">English name: {{ spaceObject.englishName }} </ion-text><br>
+      <ion-text *ngIf="spaceObject.bodyType != null">Body type: {{ spaceObject.bodyType }} </ion-text><br>
+      <ion-text *ngIf="spaceObject.isPlanet != null">Is planet: {{ spaceObject.isPlanet }} </ion-text><br>
+      <ion-text *ngIf="spaceObject.aroundPlanet != null">Around planet: {{ spaceObject.aroundPlanet.planet }} </ion-text><br>
+      <ion-text *ngIf="spaceObject.dimension != null">Dimension: {{ spaceObject.dimension }} </ion-text><br>
+      <ion-text *ngIf="spaceObject.gravity != null">Gravity: {{spaceObject.gravity}} </ion-text><br>
+      <ion-text *ngIf="spaceObject.density != null">Density: {{ spaceObject.density }} </ion-text><br>
+      <ion-text *ngIf="spaceObject.meanRadius != null">Mean radius: {{ spaceObject.meanRadius }} </ion-text><br>
+      <ion-text *ngIf="spaceObject.moons != null">Moons: {{ spaceObject.moons.moon }} </ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
